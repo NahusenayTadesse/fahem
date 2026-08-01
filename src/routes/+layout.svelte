@@ -4,6 +4,7 @@
 	import { Toaster } from 'svelte-sonner';
 	import SiteNav from '$lib/components/site-nav.svelte';
 	import SiteFooter from '$lib/components/site-footer.svelte';
+	import WhatsappChat from '$lib/components/whatsapp-chat.svelte';
 	import { page } from '$app/state';
 
 	let { children, data } = $props();
@@ -29,19 +30,19 @@
 {#if page.url.pathname === '/dashboard' || page.url.pathname.startsWith('/dashboard/')}
 	{@render children?.()}
 {:else}
-
-<div
-	class="flex min-h-screen flex-col bg-background text-foreground selection:bg-primary selection:text-primary-foreground"
->
-	<SiteNav />
-	<main class="flex-1">
-		<!-- Keyed on the path so each navigation replays the page's entrance animations. -->
-		{#key page.url.pathname}
-			<div class="enter-fade" style="--enter-duration: 500ms">
-				{@render children()}
-			</div>
-		{/key}
-	</main>
-	<SiteFooter settings={data.settings} partners={data.partners} />
-</div>
+	<div
+		class="flex min-h-screen flex-col bg-background text-foreground selection:bg-primary selection:text-primary-foreground"
+	>
+		<SiteNav />
+		<main class="flex-1">
+			<!-- Keyed on the path so each navigation replays the page's entrance animations. -->
+			{#key page.url.pathname}
+				<div class="enter-fade" style="--enter-duration: 500ms">
+					{@render children()}
+				</div>
+			{/key}
+		</main>
+		<SiteFooter settings={data.settings} partners={data.partners} />
+		<WhatsappChat phones={data.settings?.phones} email={data.settings?.emails?.[0]?.value} />
+	</div>
 {/if}

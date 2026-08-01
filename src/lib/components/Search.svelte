@@ -1,8 +1,8 @@
-<script>
+<script lang="ts">
 	import * as Command from '$lib/components/ui/command/index.js';
 	import { Disc, Search } from '@lucide/svelte';
 	import * as Dialog from '$lib/components/ui/dialog/index.js';
-	import { ScrollArea } from '$lib/components/ui/scroll-area/index.js';
+
 	let isOpen = $state(false);
 	let list = [
 		{ label: 'Dashboard', path: '/dashboard' },
@@ -35,26 +35,28 @@
 
 <Dialog.Root bind:open={isOpen}>
 	<Dialog.Trigger class="w-auto px-4" title="Search for Pages"><Search /></Dialog.Trigger>
-	<Dialog.Content class="w-full">
+	<Dialog.Content class="max-w-lg! gap-4 overflow-hidden">
 		<Dialog.Header>
 			<Dialog.Title>Search the whole site</Dialog.Title>
 		</Dialog.Header>
-		<ScrollArea class="h-auto rounded-md border p-2">
-			<h5 class="text-center">Search Anything</h5>
-			<Command.Root class="rounded-lg shadow-md md:min-w-[450px]">
-				<Command.Input placeholder="Type a command or search..." type="search" />
-				<Command.List>
-					<Command.Empty>No results found.</Command.Empty>
-					<Command.Group heading="Suggestions">
-						{#each list as item (item.path)}
-							<Command.Item>
-								<Disc />
-								<a href={item.path} onclick={() => (isOpen = false)}>{item.label}</a>
-							</Command.Item>
-						{/each}
-					</Command.Group>
-				</Command.List>
-			</Command.Root>
-		</ScrollArea>
+		<!-- Command.List brings its own max-height and scrolling, so no ScrollArea. -->
+		<Command.Root class="w-full min-w-0 rounded-lg border">
+			<Command.Input placeholder="Type a page name..." />
+			<Command.List>
+				<Command.Empty>No results found.</Command.Empty>
+				<Command.Group heading="Pages">
+					{#each list as item (item.path)}
+						<Command.LinkItem
+							href={item.path}
+							value={item.label}
+							onSelect={() => (isOpen = false)}
+						>
+							<Disc />
+							{item.label}
+						</Command.LinkItem>
+					{/each}
+				</Command.Group>
+			</Command.List>
+		</Command.Root>
 	</Dialog.Content>
 </Dialog.Root>

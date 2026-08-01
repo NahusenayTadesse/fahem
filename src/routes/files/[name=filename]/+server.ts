@@ -55,7 +55,7 @@ function parseRange(header: string, size: number): { start: number; end: number 
 // ---------------------------------------------------------------------------
 // MIME types
 // ---------------------------------------------------------------------------
-const mimes: Record<string, string> & { lookup: (s: string) => string } = {
+const mimes = {
 	// Text
 	txt: 'text/plain',
 	pdf: 'application/pdf',
@@ -72,7 +72,8 @@ const mimes: Record<string, string> & { lookup: (s: string) => string } = {
 	mp4: 'video/mp4',
 	lookup(s: string): string {
 		const ext = s.toLowerCase().split('.').at(-1);
-		return (ext && this[ext]) ?? 'application/octet-stream';
+		const type = ext ? (this as Record<string, unknown>)[ext] : undefined;
+		return typeof type === 'string' ? type : 'application/octet-stream';
 	}
 };
 
