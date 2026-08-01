@@ -4,6 +4,7 @@
 	import { Expand } from '@lucide/svelte';
 	import GalleryLightbox from './GalleryLightbox.svelte';
 	import type { GalleryImage } from '$lib/types.js';
+	import { assetUrl } from '$lib/assets';
 
 	let {
 		images,
@@ -113,7 +114,7 @@
 						class="group relative aspect-4/5 overflow-hidden rounded-3xl border border-border bg-muted shadow-[0_2px_12px_-6px_rgb(0_0_0/0.4)] transition-[box-shadow] duration-500 will-change-[transform,opacity] data-[active=true]:shadow-[0_30px_60px_-28px_rgb(0_0_0/0.6)]"
 					>
 						<img
-							src={image.src}
+							src={assetUrl(image.src)}
 							alt={image.alt}
 							loading={i < 2 ? 'eager' : 'lazy'}
 							decoding="async"

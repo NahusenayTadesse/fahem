@@ -1,11 +1,12 @@
 <script lang="ts">
 	import './layout.css';
-	import { ModeWatcher } from 'mode-watcher';
+	import { ModeWatcher, mode } from 'mode-watcher';
+	import { Toaster } from 'svelte-sonner';
 	import SiteNav from '$lib/components/site-nav.svelte';
 	import SiteFooter from '$lib/components/site-footer.svelte';
 	import { page } from '$app/state';
 
-	let { children } = $props();
+	let { children, data } = $props();
 </script>
 
 <svelte:head>
@@ -23,6 +24,11 @@
 </svelte:head>
 
 <ModeWatcher />
+<Toaster theme={mode.current} richColors closeButton position="top-right" />
+
+{#if page.url.pathname === '/dashboard' || page.url.pathname.startsWith('/dashboard/')}
+	{@render children?.()}
+{:else}
 
 <div
 	class="flex min-h-screen flex-col bg-background text-foreground selection:bg-primary selection:text-primary-foreground"
@@ -36,5 +42,6 @@
 			</div>
 		{/key}
 	</main>
-	<SiteFooter />
+	<SiteFooter settings={data.settings} partners={data.partners} />
 </div>
+{/if}

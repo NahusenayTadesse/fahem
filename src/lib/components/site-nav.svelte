@@ -2,14 +2,7 @@
 	import { page } from '$app/state';
 	import { Menu, X } from '@lucide/svelte';
 	import ThemeToggle from '$lib/components/theme-toggle.svelte';
-
-	const links = [
-		{ href: '/', label: 'Home' },
-		{ href: '/our-coffee', label: 'Our Coffee' },
-		{ href: '/about', label: 'About Us' },
-		{ href: '/ventures', label: 'Ventures' },
-		{ href: '/contact', label: 'Contact' },
-	];
+	import { navLinks as links } from '$lib/nav-links';
 
 	let open = $state(false);
 </script>

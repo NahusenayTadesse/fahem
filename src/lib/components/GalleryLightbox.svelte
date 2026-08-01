@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { Dialog } from 'bits-ui';
+	import { assetUrl } from '$lib/assets';
 	import * as Carousel from '$lib/components/ui/carousel/index.js';
 	import type { CarouselAPI } from '$lib/components/ui/carousel/context.js';
 	import { X } from '@lucide/svelte';
@@ -101,7 +102,7 @@
 								class="flex h-[calc(100dvh-11rem)] items-center justify-center px-5 sm:px-16"
 							>
 								<img
-									src={image.full ?? image.src}
+									src={assetUrl(image.full ?? image.src)}
 									alt={image.alt}
 									loading={eager(i) ? 'eager' : 'lazy'}
 									decoding="async"
