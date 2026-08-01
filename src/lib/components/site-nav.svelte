@@ -19,7 +19,7 @@
 >
 	<nav class="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6">
 		<a href="/" class="flex items-center gap-2.5">
-			<img src="/logo-icon.webp" alt="" class="h-9 w-auto sm:h-10" />
+			<img src="/logo-icon.webp" alt="" class="h-9 w-auto dark:invert sm:h-10" />
 			<span class="font-heading text-xl font-bold tracking-tight">
 				Fahem <span class="text-primary">General Trading</span>
 			</span>

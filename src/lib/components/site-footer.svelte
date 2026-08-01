@@ -21,7 +21,7 @@
 		<div class="grid gap-12 md:grid-cols-4">
 			<div class="md:col-span-2">
 				<a href="/" class="flex items-center gap-3">
-					<img src="/logo.webp" alt="Fahem General Trading" class="h-16 w-auto sm:h-20" />
+					<img src="/logo.webp" alt="Fahem General Trading" class="h-16 dark:invert w-auto sm:h-20" />
 				</a>
 				<p class="mt-4 max-w-sm text-sm text-muted-foreground">
 					Harvested With Passion, Shared With Pride. Sourcing premium Ethiopian Arabica beans from
