@@ -9,12 +9,9 @@ import { auth } from '$lib/server/auth';
 
 export const load: PageServerLoad = async ({ locals, parent }) => {
 	if (locals.user) {
-		const roleName = (await parent()).roleName;
-
-		if (roleName === 'Admin') {
-			return redirect(302, '/dashboard');
-		} else return redirect(302, '/');
+	     return redirect(302, '/dashboard');
 	}
+	
 	const form = await superValidate(zod4(loginSchema));
 
 	return { form };

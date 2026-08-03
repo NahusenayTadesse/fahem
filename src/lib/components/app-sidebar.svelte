@@ -133,11 +133,11 @@
 		<p class="text-[10px] text-muted-foreground">
 			Powered by{' '}
 			<a
-				href="https://digitalconstruct.com"
+				href="https://nahusenaytadesse.vercel.app"
 				target="_blank"
 				class="font-medium text-foreground no-underline hover:underline"
 			>
-				Digital Construct
+				NT
 			</a>
 		</p>
 	</Sidebar.Footer>

@@ -88,12 +88,12 @@
 		>
 			<p>Copyright &copy; {new Date().getFullYear()} Fahem General Trading. All rights reserved.</p>
 			<a
-				href="http://krinfud.com"
+				href="http://nahusenaytadesse.vercel.app"
 				target="_blank"
 				rel="noreferrer noopener"
 				class="hover:text-primary"
 			>
-				Developed by Krinfud Digitals
+				Developed by NT
 			</a>
 		</div>
 	</div>
